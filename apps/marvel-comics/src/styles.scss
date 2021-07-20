@@ -21,7 +21,7 @@ body{
   .dialog-show-comic-detail{
     .mat-dialog-container{
       padding: 0;
-      width: 50vw;
+      width: 70vw;
       //height: 70vh;
     }
 
@@ -62,6 +62,15 @@ body{
           }
         }
       }
+    }
+  }
+}
+
+.cdk-global-overlay-wrapper[max-width~="1160px"]{
+  .dialog-show-comic-detail{
+    .mat-dialog-container{
+      padding: 0;
+      width: 90vw;
     }
   }
 }

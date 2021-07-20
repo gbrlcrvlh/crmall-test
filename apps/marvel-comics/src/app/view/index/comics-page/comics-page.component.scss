@@ -53,5 +53,12 @@
 }
 
 .comics-container[max-width~="700px"]{
-  flex-direction: column;
+  .list-filter{
+    position: absolute;
+    z-index: 99;
+
+    &.filter-expanded{
+      width: 40%;
+    }
+  }
 }

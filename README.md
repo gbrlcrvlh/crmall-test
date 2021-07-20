@@ -1,98 +1,31 @@
 # CrmallTest
 
-This project was generated using [Nx](https://nx.dev).
+Este projeto foi gerado utilizando o framework [Nx](https://nx.dev), que provém uma boa estrutura e configuração de projetos auxiliando o desenvolvimento e integrabilidade.
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+### Desafio
+> Crie uma Single Page Application (Angular 10) de uma loja de quadrinhos utilizando a API da Marvel para todos os consumos de dados.
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+### Solução
 
-## Quick Start & Documentation
+#### Visão geral
+Este projeto foi criado a fim de solucionar o desafio proposto na 3ª etapa do processo seletivo da CRMALL. A solução consiste de uma *Single Page Application* que coleta os dados disponibilizados pela API da Marvel via *Rest*. Na página é possível visualizar os quadrinhos que estão disposto em um *card* contendo a imagem da capa, título e autores. Mais detalhes sobre o quadrinho é possível visualizar através do clique no título do mesmo, além de ser possível ser criado uma coleção de quadrinhos através do clique na sua imagem.
 
-[Nx Documentation](https://nx.dev/angular)
+A barra de navegação consta com um expansor para os filtros utilizado na listagem dos quadrinhos, disponibilizado pela API. Além de exibir um botão para *checkout* dos produtos selecionados.
 
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
+#### Listagem dos quadrinhos
+Devido ao alto volume de quadrinhos disponibilizado pela APi e a fim de reduzir os impactos causados por uma grande carda de dados, os quadrinhos são carregados sob demanda, limitado a 50 por requisição, através da rolagem da página.
 
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
+#### Filtro
+Nos componentes de fifltragem é possível identificar itens cujo o filtro é feito através de um *multi select*, sendo as opções adquiridas também através da API e carregadas sob demanda através da rolagem no *card* de seleção. Além de ser possível realizar buscas nas opções.
 
-## Adding capabilities to your workspace
+#### checkout
+Os itens selecionados pela listagem de quadrinhos ficam disponíveis para qualquer componente consumir a lista, isto é feito através do Redux e NgRx que possibilita a disponibilidade de informações sem restrição de relacionamento entre os componentes. A fim de concluir o desafio no prazo inicialmente estabelecido, apenas foi feito um botão de *checkout* com a exibição da contagem de itens selecionados.
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+### Funcionamento 
+Para rodar o projeto basta seguir os passos:
+ - `git clone https://github.com/gbrlcrvlh/crmall-test.git`
+ - `npm install`
+ - `ng serve`
 
-Below are our core plugins:
-
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
-
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
-
-## Generate an application
-
-Run `ng g @nrwl/angular:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are sharable across libraries and applications. They can be imported from `@crmall-test/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-## ☁ Nx Cloud
-
-### Computation Memoization in the Cloud
-
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+Ao seguir os passos é possível acessar através do link `http://localhost:4200/#/crmall-test/`

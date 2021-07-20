@@ -1,0 +1,15 @@
+<mat-form-field appearance="outline" style="width: 100%">
+  <mat-label>{{fieldTitle}}</mat-label>
+  <mat-select [formControl]="control" #Select (closed)="selectClosed()" multiple>
+    <mat-option *ngIf="!hideSearch">
+      <ngx-mat-select-search [disableScrollToActiveOnOptionsChanged]="true" (keyup)="changed($event.target['value'])"
+                             noEntriesFoundLabel="{{ 'Nenhum resultado encontrado!' }}"
+                             placeholderLabel="{{ 'Buscar' }}">
+        <mat-icon ngxMatSelectSearchClear (click)="resetSelectFilter()">clear</mat-icon>
+      </ngx-mat-select-search>
+    </mat-option>
+    <mat-option *ngFor="let item of itemList;let i = index" [value]="item">
+      {{getdisplayLabel(item)}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

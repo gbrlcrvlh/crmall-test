@@ -1,0 +1,56 @@
+.filter-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+
+  .field-box{
+    margin: 8px 16px;
+
+    mat-form-field{
+      width: 100%;
+    }
+  }
+
+  .cart-box{
+    margin: 8px 16px;
+    padding: 16px 4px;
+    border-radius: 10px;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    cursor: pointer;
+    color: white;
+
+    &:hover{
+      background-color: #424349;
+      //border: 1px solid red;
+    }
+
+    mat-icon{
+      width: 52px;
+      height: 52px;
+      font-size: 52px;
+    }
+
+    span{
+      font-size: 24px;
+    }
+  }
+
+  .cart-box[max-width~="240px"]{
+    justify-content: space-between;
+
+    mat-icon{
+      width: 42px;
+      height: 42px;
+      font-size: 42px;
+    }
+
+    span{
+      text-align: right;
+      font-size: 18px;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<div class="navbar mat-elevation-z20">
+  <button (click)="expaandedFilter = !expaandedFilter" mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img src="assets/images/logo/marvel-logo.png">
+</div>
+<div class="comics-container">
+  <crmall-test-comics-filter [ngClass]="{'filter-expanded': expaandedFilter}" class="list-filter mat-elevation-z3">
+  </crmall-test-comics-filter>
+
+  <crmall-test-comics-list class="list-container">
+  </crmall-test-comics-list>
+</div>

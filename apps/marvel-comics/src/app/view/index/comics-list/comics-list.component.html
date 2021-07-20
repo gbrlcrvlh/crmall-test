@@ -1,0 +1,18 @@
+<div class="loading" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="comics-list-container" #comicListContainer>
+  <div *ngFor="let item of comicsList" class="box-comics mat-elevation-z2" [ngClass]="{'selected': findItemIdInSelectedList(item)}">
+    <img [src]="getImage(item)" (click)="toggleSelectedComic(item)" class="mat-elevation-z3 comic-image">
+    <span class="comic-title" (click)="openComicsDetail(item)">{{item.title}}</span>
+    <div class="comic-authors">
+      <span class="comic-author" *ngFor="let creator of item.creators.items | slice:0:2">{{creator.name}} </span>
+    </div>
+  </div>
+
+  <div class="no-result" *ngIf="comicsList.length == 0">
+    <img src="assets/images/not-found.png">
+    <span>Sem resultados</span>
+  </div>
+</div>

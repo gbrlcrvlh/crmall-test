@@ -1,0 +1,20 @@
+<div class="dialog-show-comic-detail-card">
+  <img [src]="getImage()" class="mat-elevation-z3 comic-image">
+  <div class="comic-detail">
+    <span class="title">{{data.item.title}}</span>
+    <div class="detail-info">
+      <span class="title">Data de Publicação:</span>
+      <span class="info">{{ data.item.modified | date: 'dd/MM/yyyy' }}</span>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <div class="detail-info">
+        <span class="title">Equipe:</span>
+        <span class="info" *ngFor="let item of data.item.creators.items">{{item.name+' ('+item.role+')'}}</span>
+      </div>
+    </div>
+
+    <span style="margin-top: 32px; font-size: 14px; color: #e2e2e8; text-align: justify">
+      {{data.item.description}}
+    </span>
+  </div>
+</div>

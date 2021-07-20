@@ -1,0 +1,62 @@
+<div class="filter-container">
+
+  <div class="field-box">
+    <mat-form-field appearance="outline">
+      <mat-label>Título</mat-label>
+      <input [formControl]="comicsName" (keyup)="changed($event.target['value'])" matInput placeholder="Buscar pelo título">
+    </mat-form-field>
+  </div>
+
+  <div class="field-box">
+    <crmall-test-custom-select-data
+      [fieldTitle]="'Personagen'"
+      [service]="this.charactersService"
+      [control]="charactersSelected"
+      [displayLabel]="['name']"
+      [searchParam]="'nameStartsWith'"
+      (onSelectClosedEvent)="queryParamsUpdate()">
+      </crmall-test-custom-select-data>
+  </div>
+
+  <div class="field-box">
+    <crmall-test-custom-select-data
+      [fieldTitle]="'Criadores'"
+      [service]="this.creatorsService"
+      [control]="creatorsSelected"
+      [itemParams]="{limit: 10, offset: 0, orderBy:'firstName'}"
+      [displayLabel]="['fullName']"
+      [searchParam]="'nameStartsWith'"
+      (onSelectClosedEvent)="queryParamsUpdate()">
+    </crmall-test-custom-select-data>
+  </div>
+
+  <div class="field-box">
+    <crmall-test-custom-select-data
+      [fieldTitle]="'Eventos'"
+      [service]="this.eventsService"
+      [control]="eventsSelected"
+      [displayLabel]="['title']"
+      [searchParam]="'titleStartsWith'"
+      (onSelectClosedEvent)="queryParamsUpdate()">
+    </crmall-test-custom-select-data>
+  </div>
+
+  <div class="field-box">
+    <crmall-test-custom-select-data
+      [fieldTitle]="'Série'"
+      [service]="this.seriesService"
+      [control]="seriesSelected"
+      [itemParams]="{limit: 10, offset: 0, orderBy:'title'}"
+      [displayLabel]="['title']"
+      [searchParam]="'nameStartsWith'"
+      (onSelectClosedEvent)="queryParamsUpdate()">
+    </crmall-test-custom-select-data>
+  </div>
+
+  <div class="cart-box">
+    <mat-icon [matBadgeHidden]="cartLength==0" matBadge="{{cartLength}}">shopping_cart</mat-icon>
+    <span>Finalizar Pedido!</span>
+  </div>
+
+</div>
+

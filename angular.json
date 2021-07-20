@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "projects": {
+    "marvel-comics": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/marvel-comics",
+      "sourceRoot": "apps/marvel-comics/src",
+      "prefix": "crmall-test",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/marvel-comics",
+            "index": "apps/marvel-comics/src/index.html",
+            "main": "apps/marvel-comics/src/main.ts",
+            "polyfills": "apps/marvel-comics/src/polyfills.ts",
+            "tsConfig": "apps/marvel-comics/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/marvel-comics/src/favicon.ico",
+              "apps/marvel-comics/src/assets"
+            ],
+            "styles": ["apps/marvel-comics/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/marvel-comics/src/environments/environment.ts",
+                  "with": "apps/marvel-comics/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "marvel-comics:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "marvel-comics:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "marvel-comics:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/marvel-comics/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/marvel-comics/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "marvel-comics-e2e": {
+      "root": "apps/marvel-comics-e2e",
+      "sourceRoot": "apps/marvel-comics-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/marvel-comics-e2e/cypress.json",
+            "tsConfig": "apps/marvel-comics-e2e/tsconfig.e2e.json",
+            "devServerTarget": "marvel-comics:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "marvel-comics:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/marvel-comics-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "analytics": false
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "marvel-comics"
+}
